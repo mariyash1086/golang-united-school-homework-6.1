@@ -46,7 +46,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	//	panic("implement me")
 
-	if i < len(b.shapes) {
+	if i <= len(b.shapes) {
 		mShape := b.shapes[i]
 		b.shapes[i] = b.shapes[len(b.shapes)-1]
 		return mShape, nil
