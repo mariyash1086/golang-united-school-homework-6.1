@@ -46,7 +46,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	//	panic("implement me")
 
-	if i <= len(b.shapes) {
+	if i < len(b.shapes) {
 		mShape := b.shapes[i]
 		b.shapes[i] = b.shapes[len(b.shapes)-1]
 		return mShape, nil
@@ -75,17 +75,20 @@ func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
 func (b *box) SumPerimeter() float64 {
 	//	panic("implement me")
 	sum := 0.00
+
 	for _, elem := range b.shapes {
-		switch elem.(type) {
-		case Circle:
-			sum = sum + elem.CalcPerimeter()
-		case Triangle:
-			sum = sum + elem.CalcPerimeter()
-		case Rectangle:
-			sum = sum + elem.CalcPerimeter()
-		default:
-			sum = sum + 0.00
-		}
+		//		switch elem.(type) {
+		//		case Circle:
+		//			sum = sum + elem.CalcPerimeter()
+		//		case Triangle:
+		//			sum = sum + elem.CalcPerimeter()
+		//		case Rectangle:
+		//			sum = sum + elem.CalcPerimeter()
+		//		default:
+		//			sum = sum + 0.00
+		//		}
+		sum = sum + elem.CalcPerimeter()
+
 	}
 
 	return sum
@@ -97,18 +100,17 @@ func (b *box) SumArea() float64 {
 	//panic("implement me")
 	sum := 0.00
 	for _, elem := range b.shapes {
-		switch elem.(type) {
-		case Circle:
-			sum = sum + elem.CalcArea()
-		case Triangle:
-			sum = sum + elem.CalcArea()
-		case Rectangle:
-			sum = sum + elem.CalcArea()
-		default:
-			sum = sum + 0.00
-		}
+		//		switch elem.(type) {
+		//		case Circle:
+		//			sum = sum + elem.CalcArea()
+		//		case Triangle:
+		//			sum = sum + elem.CalcArea()
+		//		case Rectangle:
+		//			sum = sum + elem.CalcArea()
+		//		default:
+		//			sum = sum + 0.00
+		sum = sum + elem.CalcArea()
 	}
-
 	return sum
 }
 
