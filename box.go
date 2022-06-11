@@ -128,6 +128,7 @@ func (b *box) RemoveAllCircles() error {
 			haveCircle = true
 			b.shapes[i] = b.shapes[len(b.shapes)-1]
 			j = j + 1
+			b.shapes[len(b.shapes)-j] = nil
 		}
 	}
 
