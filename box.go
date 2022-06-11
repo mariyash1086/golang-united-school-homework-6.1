@@ -49,6 +49,8 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 	if i < len(b.shapes) {
 		mShape := b.shapes[i]
 		b.shapes[i] = b.shapes[len(b.shapes)-1]
+		b.shapes[len(b.shapes)-1] = nil
+		b.shapes = b.shapes[:len(b.shapes)-1]
 		return mShape, nil
 	} else {
 		return nil, errors.New("ошибка")
