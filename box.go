@@ -120,23 +120,37 @@ func (b *box) SumArea() float64 {
 // whether circles are not exist in the list, then returns an error
 func (b *box) RemoveAllCircles() error {
 	//	panic("implement me")
+	//for i, elem := range b.shapes {
 	haveCircle := false
-	j := 0
-	for i, elem := range b.shapes {
+	//j := 0
+	newSlice := []Shape{}
+	for _, elem := range b.shapes {
 		switch elem.(type) {
 		case Circle:
 			haveCircle = true
-			b.shapes[i] = b.shapes[len(b.shapes)-1]
-			j = j + 1
-			b.shapes[len(b.shapes)-j] = nil
+		//	b.shapes[i] = b.shapes[len(b.shapes)-1]
+		//	j = j + 1
+		//	b.shapes[len(b.shapes)-j] = nil
+
+		default:
+			newSlice = append(newSlice, elem)
 		}
 	}
-
-	if !haveCircle {
-		return errors.New("ошибка")
-	} else {
-		b.shapes = b.shapes[:len(b.shapes)-j]
+	if haveCircle {
+		b.shapes = newSlice
 		return nil
+	} else {
+		return errors.New("jib,rf")
 	}
+
+	//}
+
+	return nil
+	//if !haveCircle {
+	//		return errors.New("ошибка")
+	//} else {
+	//	b.shapes = b.shapes[:len(b.shapes)-j]
+	//	return nil
+	//}
 
 }
