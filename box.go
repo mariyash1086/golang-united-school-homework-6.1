@@ -121,17 +121,20 @@ func (b *box) SumArea() float64 {
 func (b *box) RemoveAllCircles() error {
 	//	panic("implement me")
 	haveCircle := false
+	j := 0
 	for i, elem := range b.shapes {
 		switch elem.(type) {
 		case Circle:
 			haveCircle = true
 			b.shapes[i] = b.shapes[len(b.shapes)-1]
+			j = j + 1
 		}
 	}
 
 	if !haveCircle {
 		return errors.New("ошибка")
 	} else {
+		b.shapes = b.shapes[:len(b.shapes)-j]
 		return nil
 	}
 
